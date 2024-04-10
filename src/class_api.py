@@ -1,17 +1,19 @@
 import requests
 from abc import ABC, abstractmethod
+from confing import dir_json_vacancies, dir_json_vacancies_sort
 
 
 class ClassAPI(ABC):
     @abstractmethod
-    def get_vacancies(self, word_search):
+    def get_api(self, word_search):
         pass
 
 
 class ClassAPIHH(ClassAPI):
     """Подключается к api.hh.ru и получает вакансии по ключевому слову"""
 
-    def get_vacancies(self, word_search, region=1):
+    def get_api(self, word_search, region=1):
+    #def get_api(self, word_search, order_by="salary_desc", region=1):
         """
              Получает вакансии по ключевому слову из API сервиса hh.ru
              :param word_search: Ключевое слово для поиска вакансий
@@ -22,18 +24,19 @@ class ClassAPIHH(ClassAPI):
         params = {
             'text': word_search,  # Ключевое слово
             'area': region,  # Регион
-            'per_page': 100,  # количество результатов на странице;
-            'page': 1,  # номер страницы
+            # 'per_page': 100,  # количество результатов на странице;
+            # 'page': 2,  # номер страницы
+            # 'order_by':  order_by,  # Сортировка по зарплате
             'only_with_salary': 'true'  # Возвращать только вакансии с заработной платой
         }
         response = requests.get(url, params=params)
-        return response.json()
+        return response.json()['items']
 
 
 class ClassAPIHHR(ClassAPI):
     """Подключается к api.hh.ru и получает id регионов"""
 
-    def get_vacancies(self, side="113"):
+    def get_api(self, side="113"):
         url = 'https://api.hh.ru/areas/'+side
         response = requests.get(url)
         for i in response.json().get('areas'):
@@ -42,14 +45,37 @@ class ClassAPIHHR(ClassAPI):
         return response.json()
 
 
-# print(ClassAPI().get_vacancies("python"))
-# print(ClassAPIR().get_vacancies("python"))
-rt = input("Введите слово для поиска ")
-id = input("Введите id региона если id не известен то нажмите enter для отображения списка регионов ")
-if id:
-    ClassAPIHH().get_vacancies(rt, id)
-else:
-    ClassAPIHHR().get_vacancies()
-    id = input("Введите id региона ")
+# class ClassAPIHHSort(ClassAPI):
+#     def get_api(self, vacancy_search_order="vacancy_search_order"):
+#         url = 'https://api.hh.ru/dictionaries'
+#         response = requests.get(url)
+#         for i in response.json().get(vacancy_search_order):
+#             print(f"id={i.get('id')} {i.get('name')} ")
+#
+#         return response.json()
+#
+#         # list_vacancy_search_order = []
+#         # number = 1
+#         # for i in response.json().get('vacancy_search_order'):
+#         #     i["Number"] = number
+#         #     list_vacancy_search_order.append(i)
+#         #     print(f"{i.get('Number')} {i.get('name')}")
+#         #     number += 1
+#         # return list_vacancy_search_order
 
-print(ClassAPIHH().get_vacancies(rt, id))
+
+
+# rt = input("Введите слово для поиска ")
+#
+# ClassAPIHHR().get_api()
+# id = input("Введите id региона ")
+
+# ClassAPIHHSort().get_api()
+# vacancy_search_order = input("Введите id сортировки ")
+
+
+#
+# dir_json = ClassAPIHH().get_api(rt, id)
+# print(ClassAPIHH().get_api(rt, id))
+
+
