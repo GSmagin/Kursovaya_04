@@ -4,15 +4,21 @@ from src.class_file import ClassFile
 
 def main():
 
-    # print(ClassAPIHH().get_api("системный администратор", "1"))
-    vacancy = ClassAPIHH().get_api("системный администратор", "2")
+    # Запрос информации для отправки запроса на сервер HH API
+    name_vacancy = input('Введите название вакансии: ')
+    ClassAPIHHR().get_api()
+    name_region = input('\nВведите название id региона (по умолчанию Москва): \n')
+    if not name_region:
+        name_region = '1'
+    vacancy = ClassAPIHH().get_api(name_vacancy, name_region)
+    # сохранение в файл результата запроса
     ClassFile.save_to_file(vacancy)
 
-    ClassAPIHHR().get_api()
+
 
     # print(ClassFile.load_from_file().get("items"))
     for i in ClassFile.load_from_file():
-        print(i.get("name"))
+        print(f"{i.get('area').get('name')}, {i.get('name')}")
 
 
 if __name__ == "__main__":
