@@ -1,18 +1,18 @@
 import requests
 from abc import ABC, abstractmethod
-from confing import dir_json_vacancies, dir_json_vacancies_sort
+from confing import DIR_JSON_VACANCIES, DIR_JSON_VACANCIES_SORT
 
 
 class ClassAPI(ABC):
     @abstractmethod
-    def get_api(self, word_search):
+    def get_api(self, word_search) -> dict:
         pass
 
 
 class ClassAPIHH(ClassAPI):
     """Подключается к api.hh.ru и получает вакансии по ключевому слову"""
 
-    def get_api(self, word_search, region):
+    def get_api(self, word_search, region) -> dict:
         # def get_api(self, word_search, order_by="salary_desc", region=1):
         """
              Получает вакансии по ключевому слову из API сервиса hh.ru
@@ -36,7 +36,7 @@ class ClassAPIHH(ClassAPI):
 class ClassAPIHHR(ClassAPI):
     """Подключается к api.hh.ru и получает id регионов"""
 
-    def get_api(self, side="113"):
+    def get_api(self, side="113") -> dict:
         url = 'https://api.hh.ru/areas/' + side
         response = requests.get(url)
         for i in response.json().get('areas'):
