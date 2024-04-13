@@ -1,14 +1,13 @@
-from src.class_file import ClassFile
-from src.class_vacancies_hh import VacanciesHH
+from src.class_vacancies_hh_1111 import VacanciesHH
 
 
 # def recording_file(filename):
 #     with open('../data/vacancies.json', 'w') as file:
 #         json.dump(good_vacancy, file, ensure_ascii=False, default=lambda x: x.__dict__)
 
-def instance_class():
+def instance_vacancy_hh(data) -> list:
     instance_vacancy = []
-    for i in ClassFile.load_from_file():
+    for i in data:
         instance_vacancy.append(VacanciesHH(
             i.get('name'),  # Вакансия
             i.get('area').get('name'),  # Регион
@@ -18,6 +17,6 @@ def instance_class():
             i.get('snippet').get('requirement'),  # Комментарий
             i.get('snippet').get('responsibility'),  # Обязанности
             i.get('employer').get('vacancies_url')))  # Ссылка на вакансию
-    return instance_vacancy
+        return instance_vacancy
 
 

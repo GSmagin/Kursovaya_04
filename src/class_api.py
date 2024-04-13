@@ -30,7 +30,7 @@ class ClassAPIHH(ClassAPI):
             'only_with_salary': 'true'  # Возвращать только вакансии с заработной платой
         }
         response = requests.get(url, params=params)
-        return response.json().get('items')
+        return response.json()
 
 
 class ClassAPIHHR(ClassAPI):

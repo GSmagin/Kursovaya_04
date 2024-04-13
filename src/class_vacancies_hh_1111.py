@@ -27,13 +27,17 @@ class VacanciesHH:
 
         self.validate_salary()
 
-    def validate_salary(self):
-        """
-        Валидация данный о вакансии
-        :return: Если зарплата не указана, устанавливает значение 0 для salary_from.
-        """
-        if not self.salary_from:
-            self.salary_from = 0
+    def __add__(self, other):
+        return (
+            self.name + other.name,
+            self.area_name + other.area_name,
+            self.salary_from + other.salary_from,
+            self.salary_to + other.salary_to,
+            self.salary_currency + other.salary_currency,
+            self.snippet_requirement + other.snippet_requirement,
+            self.snippet_responsibility + other.snippet_responsibility,
+            self.url + other.url
+        )
 
     def __repr__(self):
         """Строковое представление объекта"""
@@ -52,9 +56,23 @@ class VacanciesHH:
                and self.snippet_requirement == other.snippet_requirement \
                and self.snippet_responsibility == other.snippet_responsibility and self.url == other.url
 
-    def filter_vacancies_by_salary(self, min_salary):
+    def __le__(self, other):
+        """Сравнение двух объектов"""
+        return self.salary_from <= other.salary_from
+
+    def validate_salary(self):
+        """
+        Валидация данный о вакансии
+        :return: Если зарплата не указана, устанавливает значение 0 для salary_from.
+        """
+        if not self.salary_from:
+            self.salary_from = 0
+
+    def filter_vacancies_by_salary_minimum(self, min_salary) -> list:
         """Фильтрация вакансий по минимальной зарплате"""
         return [vacancy for vacancy in sorted(self.salary_from, key=lambda vacancy: self.salary_from) if
                 min_salary <= self.salary_from]
 
-
+    def filter_vacancies_by_salary_sort(self) -> list:
+        """Фильтрация вакансий по минимальной зарплате"""
+        return [vacancy for vacancy in sorted(self.salary_from, key=lambda vacancy: self.salary_from)]
