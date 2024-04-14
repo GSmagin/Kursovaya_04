@@ -55,20 +55,23 @@ class VacanciesHH:
             f"Ссылка: {vacancy['url']}\n"
             for vacancy in self.items]))
 
+
     def save_vacancies_json(self):
         # with open('vacancies.txt', 'w', encoding='utf-8') as file:
         #     file.write(str(self))
-        save_items = ("\n".join([
-            f"Вакансия: {vacancy['name']}\n"
-            f"Регион: {vacancy['area']['name']}\n"
-            f"Зарплата от: {vacancy['salary']['from']}\n"
-            f"Зарплата до: {vacancy['salary']['to']}\n"
-            f"Валюта зарплаты: {vacancy['salary']['currency']}\n"
-            f"Комментарий: {vacancy['snippet']['requirement']}\n"
-            f"Обязанности: {vacancy['snippet']['responsibility']}\n"
-            f"Ссылка: {vacancy['url']}\n"
-            for vacancy in self.items]))
-        return self.items
+        save_items = []
+        for vacancy in self.items:
+            dict_sample = {}
+            dict_sample["Вакансия"] = vacancy['name']
+            dict_sample["Регион"] = vacancy['area']['name']
+            dict_sample["Зарплата от"] = vacancy['salary']['from']
+            dict_sample["Зарплата до"] = vacancy['salary']['to']
+            dict_sample["Валюта зарплаты"] = vacancy['salary']['currency']
+            dict_sample["Комментарий"] = vacancy['snippet']['requirement']
+            dict_sample["Обязанности"] = vacancy['snippet']['responsibility']
+            dict_sample["Ссылка"] = vacancy['url']
+            save_items.append(dict_sample)
+        return save_items
 
     def save_vacancies_txt(self):
         # with open('vacancies.txt', 'w', encoding='utf-8') as file:
@@ -83,6 +86,7 @@ class VacanciesHH:
             f"Обязанности: {vacancy['snippet']['responsibility']}\n"
             f"Ссылка: {vacancy['url']}\n"
             for vacancy in self.items]))
+
         return save_items
 
     def validate_salary_from(self):
