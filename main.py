@@ -43,6 +43,7 @@ def main():
     #print(manager.__repr__())
     #print("\n")
     manager.print_vacancies()
+    rtrtr = manager.print_vacancies()
     print(f"\nКоличество выведенных вакансий {manager.__len__()}\n")
 
     #print(manager)

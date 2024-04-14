@@ -1,845 +1,102 @@
 [
     {
-        "id": "96622784",
-        "premium": false,
-        "name": "Директор по капитальному строительству",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": true,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 1000000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": true
-        },
-        "type": {
-            "id": "anonymous",
-            "name": "Анонимная"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-04-10T14:13:41+0300",
-        "created_at": "2024-04-10T14:13:41+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=96622784",
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/96622784?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/96622784",
-        "relations": [],
-        "employer": {
-            "name": "Крупный российский холдинг",
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "Образование: высшее (Промышленное и гражданское строительство). Опыт управления проектами строительства промышленных объектов (общестрой) не менее 10 лет. Опыт работы на...",
-            "responsibility": "Организация всего перечня работ по проектированию, экспертизе, строительству и вводу в эксплуатацию Производственно - логистического комплекса. Координация действий внутренних и внешних..."
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "flexible",
-            "name": "Гибкий график"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "108",
-                "name": "Руководитель строительного проекта"
-            }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-            "id": "moreThan6",
-            "name": "Более 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Директор по капитальному строительству",
+        "Регион": "Москва",
+        "Зарплата от": 1000000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Образование: высшее (Промышленное и гражданское строительство). Опыт управления проектами строительства промышленных объектов (общестрой) не менее 10 лет. Опыт работы на...",
+        "Обязанности": "Организация всего перечня работ по проектированию, экспертизе, строительству и вводу в эксплуатацию Производственно - логистического комплекса. Координация действий внутренних и внешних...",
+        "Ссылка": "https://api.hh.ru/vacancies/96622784?host=hh.ru"
     },
     {
-        "id": "96012152",
-        "premium": false,
-        "name": "Руководитель проектного офиса в международную компанию",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 900000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": false
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-04-05T16:11:40+0300",
-        "created_at": "2024-04-05T16:11:40+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=96012152",
-        "branding": {
-            "type": "CONSTRUCTOR",
-            "tariff": "BASIC"
-        },
-        "show_logo_in_search": true,
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/96012152?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/96012152",
-        "relations": [],
-        "employer": {
-            "id": "4174077",
-            "name": "StaffRecruitment",
-            "url": "https://api.hh.ru/employers/4174077",
-            "alternate_url": "https://hh.ru/employer/4174077",
-            "logo_urls": {
-                "original": "https://img.hhcdn.ru/employer-logo-original/663804.png",
-                "240": "https://img.hhcdn.ru/employer-logo/3096349.png",
-                "90": "https://img.hhcdn.ru/employer-logo/3096348.png"
-            },
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=4174077",
-            "accredited_it_employer": false,
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "Опыт работы в руководящей должности в области управления проектами, предпочтительно в международной компании. Глубокие знания методологий управления проектами, таких как...",
-            "responsibility": "Управление проектным офисом, включая планирование, контроль и оценку проектов. Разработка и внедрение методологии управления проектами в компании. Определение и назначение..."
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "flexible",
-            "name": "Гибкий график"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "107",
-                "name": "Руководитель проектов"
-            }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-            "id": "between3And6",
-            "name": "От 3 до 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Руководитель проектного офиса в международную компанию",
+        "Регион": "Москва",
+        "Зарплата от": 900000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Опыт работы в руководящей должности в области управления проектами, предпочтительно в международной компании. Глубокие знания методологий управления проектами, таких как...",
+        "Обязанности": "Управление проектным офисом, включая планирование, контроль и оценку проектов. Разработка и внедрение методологии управления проектами в компании. Определение и назначение...",
+        "Ссылка": "https://api.hh.ru/vacancies/96012152?host=hh.ru"
     },
     {
-        "id": "96839118",
-        "premium": false,
-        "name": "Руководитель службы компенсаций и льгот (производство)",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 600000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": true
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-04-12T18:13:33+0300",
-        "created_at": "2024-04-12T18:13:33+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=96839118",
-        "show_logo_in_search": null,
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/96839118?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/96839118",
-        "relations": [],
-        "employer": {
-            "id": "25022",
-            "name": "ProfiStaff",
-            "url": "https://api.hh.ru/employers/25022",
-            "alternate_url": "https://hh.ru/employer/25022",
-            "logo_urls": {
-                "original": "https://img.hhcdn.ru/employer-logo-original/819234.jpg",
-                "240": "https://img.hhcdn.ru/employer-logo/3717824.jpeg",
-                "90": "https://img.hhcdn.ru/employer-logo/3717823.jpeg"
-            },
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=25022",
-            "accredited_it_employer": false,
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "Опыт работы в аналогичной должности на уровне управляющей компании в производственных компаниях/холдингах. Опыт управления командой. Успешный опыт выстраивания эффективных...",
-            "responsibility": "Разработка и сопровождение процессов материальной и нематериальной мотивации по компании. Разработка, внедрение и развитие единого подхода к грейдированию должностей в..."
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "fullDay",
-            "name": "Полный день"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "40",
-                "name": "Другое"
-            }
-        ],
-        "accept_incomplete_resumes": true,
-        "experience": {
-            "id": "moreThan6",
-            "name": "Более 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Руководитель службы компенсаций и льгот (производство)",
+        "Регион": "Москва",
+        "Зарплата от": 600000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Опыт работы в аналогичной должности на уровне управляющей компании в производственных компаниях/холдингах. Опыт управления командой. Успешный опыт выстраивания эффективных...",
+        "Обязанности": "Разработка и сопровождение процессов материальной и нематериальной мотивации по компании. Разработка, внедрение и развитие единого подхода к грейдированию должностей в...",
+        "Ссылка": "https://api.hh.ru/vacancies/96839118?host=hh.ru"
     },
     {
-        "id": "95839402",
-        "premium": false,
-        "name": "Системный аналитик",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 500000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": false
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-03-30T23:37:41+0300",
-        "created_at": "2024-03-30T23:37:41+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=95839402",
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/95839402?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/95839402",
-        "relations": [],
-        "employer": {
-            "id": "10929032",
-            "name": "Calipso",
-            "url": "https://api.hh.ru/employers/10929032",
-            "alternate_url": "https://hh.ru/employer/10929032",
-            "logo_urls": null,
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=10929032",
-            "accredited_it_employer": false,
-            "trusted": false
-        },
-        "snippet": {
-            "requirement": "Опыт в it от 5 лет. Опыт в СА от 3х лет. Проектирования бизнес-процессов (UML, BPMN). ",
-            "responsibility": "Не указано"
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "fullDay",
-            "name": "Полный день"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "148",
-                "name": "Системный аналитик"
-            }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-            "id": "between3And6",
-            "name": "От 3 до 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Системный аналитик",
+        "Регион": "Москва",
+        "Зарплата от": 500000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Опыт в it от 5 лет. Опыт в СА от 3х лет. Проектирования бизнес-процессов (UML, BPMN). ",
+        "Обязанности": "Не указано",
+        "Ссылка": "https://api.hh.ru/vacancies/95839402?host=hh.ru"
     },
     {
-        "id": "95634532",
-        "premium": false,
-        "name": "Юрист",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 480000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": true
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-03-27T15:41:12+0300",
-        "created_at": "2024-03-27T15:41:12+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=95634532",
-        "show_logo_in_search": null,
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/95634532?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/95634532",
-        "relations": [],
-        "employer": {
-            "id": "2066667",
-            "name": "Топассистент",
-            "url": "https://api.hh.ru/employers/2066667",
-            "alternate_url": "https://hh.ru/employer/2066667",
-            "logo_urls": {
-                "240": "https://img.hhcdn.ru/employer-logo/6594314.jpeg",
-                "90": "https://img.hhcdn.ru/employer-logo/6594313.jpeg",
-                "original": "https://img.hhcdn.ru/employer-logo-original/1243470.png"
-            },
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=2066667",
-            "accredited_it_employer": false,
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "опыт работы на позиции юриста. - опыт в получении гемблинг лицензий или опыт работы с high-risk проектами. - разговорный английский язык...",
-            "responsibility": "сопровождение процесса получения гемблинг лицензий в Кюрасао, Канаваке, Коморские острова. - разработка и реализация корпоративных структур для группы компаний с учетом..."
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "fullDay",
-            "name": "Полный день"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "146",
-                "name": "Юрист"
-            }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-            "id": "between1And3",
-            "name": "От 1 года до 3 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Юрист",
+        "Регион": "Москва",
+        "Зарплата от": 480000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "опыт работы на позиции юриста. - опыт в получении гемблинг лицензий или опыт работы с high-risk проектами. - разговорный английский язык...",
+        "Обязанности": "сопровождение процесса получения гемблинг лицензий в Кюрасао, Канаваке, Коморские острова. - разработка и реализация корпоративных структур для группы компаний с учетом...",
+        "Ссылка": "https://api.hh.ru/vacancies/95634532?host=hh.ru"
     },
     {
-        "id": "96748713",
-        "premium": false,
-        "name": "Первый заместитель Финансового Директора Холдинга",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 400000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": false
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-04-12T11:40:52+0300",
-        "created_at": "2024-04-12T11:40:52+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=96748713",
-        "show_logo_in_search": null,
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/96748713?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/96748713",
-        "relations": [],
-        "employer": {
-            "id": "570229",
-            "name": "Холдинговая компания АлфиГрупп",
-            "url": "https://api.hh.ru/employers/570229",
-            "alternate_url": "https://hh.ru/employer/570229",
-            "logo_urls": {
-                "original": "https://img.hhcdn.ru/employer-logo-original/1212631.png",
-                "240": "https://img.hhcdn.ru/employer-logo/6470974.png",
-                "90": "https://img.hhcdn.ru/employer-logo/6470973.png"
-            },
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=570229",
-            "accredited_it_employer": false,
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "Наш главный ресурс - команда единомышленников и целеустремленных профессионалов, обладающих обширными практическими знаниями и результативным опытом работы в различных отраслях, использующих...",
-            "responsibility": "Формирование управленческих и финансовых отчетов и их глубокий анализ. - Эффективное управление денежными средствами: Ликвидация кассовых разрывов. Формирование платежного календаря. "
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "fullDay",
-            "name": "Полный день"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "135",
-                "name": "Финансовый директор (CFO)"
-            }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-            "id": "moreThan6",
-            "name": "Более 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Советник Акционера по юридическим вопросам",
+        "Регион": "Москва",
+        "Зарплата от": 400000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Высшее юридическое образование, опыт работы юристом в крупных Холдинговых (Российских и международных) структурах на прямую с Акционерами – от 10 лет. ",
+        "Обязанности": "Участие в реализации стратегии Холдинга. Консультирование Акционера по различным правовым вопросам для принятия эффективных бизнес-решений; . Полное юридическое сопровождение деятельности...",
+        "Ссылка": "https://api.hh.ru/vacancies/96355918?host=hh.ru"
     },
     {
-        "id": "96920953",
-        "premium": false,
-        "name": "Директор по строительству (промышленное строительство)",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": true,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 400000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": false
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": {
-            "city": "Москва",
-            "street": "Центральный административный округ, Пресненский район, Московский международный деловой центр Москва-Сити, многофункциональный комплекс Город Столиц",
-            "building": null,
-            "lat": 55.747241,
-            "lng": 37.539122,
-            "description": null,
-            "raw": "Москва, Центральный административный округ, Пресненский район, Московский международный деловой центр Москва-Сити, многофункциональный комплекс Город Столиц",
-            "metro": {
-                "station_name": "Выставочная",
-                "line_name": "Филевская",
-                "station_id": "4.172",
-                "line_id": "4",
-                "lat": 55.750243,
-                "lng": 37.542641
-            },
-            "metro_stations": [
-                {
-                    "station_name": "Выставочная",
-                    "line_name": "Филевская",
-                    "station_id": "4.172",
-                    "line_id": "4",
-                    "lat": 55.750243,
-                    "lng": 37.542641
-                },
-                {
-                    "station_name": "Деловой центр",
-                    "line_name": "Большая кольцевая линия",
-                    "station_id": "97.603",
-                    "line_id": "97",
-                    "lat": 55.7491,
-                    "lng": 37.5395
-                },
-                {
-                    "station_name": "Деловой центр",
-                    "line_name": "Солнцевская",
-                    "station_id": "133.468",
-                    "line_id": "133",
-                    "lat": 55.7491,
-                    "lng": 37.5395
-                },
-                {
-                    "station_name": "Международная",
-                    "line_name": "Филевская",
-                    "station_id": "4.179",
-                    "line_id": "4",
-                    "lat": 55.748324,
-                    "lng": 37.533282
-                }
-            ],
-            "id": "14154606"
-        },
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-04-14T11:22:04+0300",
-        "created_at": "2024-04-14T11:22:04+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=96920953",
-        "show_logo_in_search": null,
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/96920953?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/96920953",
-        "relations": [],
-        "employer": {
-            "id": "9958544",
-            "name": "Концерн Отечественные Технологии",
-            "url": "https://api.hh.ru/employers/9958544",
-            "alternate_url": "https://hh.ru/employer/9958544",
-            "logo_urls": {
-                "240": "https://img.hhcdn.ru/employer-logo/6077514.png",
-                "90": "https://img.hhcdn.ru/employer-logo/6077513.png",
-                "original": "https://img.hhcdn.ru/employer-logo-original/1114229.png"
-            },
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=9958544",
-            "accredited_it_employer": false,
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "Высшее строительное или инженерное образование (желательно ПГС). Успешный опыт работы на объектах промышленного строительства (включая опыт руководства на объекте) не...",
-            "responsibility": "Управление проектами Группы в части строительства. В основном, это объекты инфраструктуры районов Крайнего Севера и Дальнего Востока: ⁃ вахтовые поселки. ⁃ "
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "fullDay",
-            "name": "Полный день"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "40",
-                "name": "Другое"
-            }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-            "id": "moreThan6",
-            "name": "Более 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Директор по строительству (промышленное строительство)",
+        "Регион": "Москва",
+        "Зарплата от": 400000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Высшее строительное или инженерное образование (желательно ПГС). Успешный опыт работы на объектах промышленного строительства (включая опыт руководства на объекте) не...",
+        "Обязанности": "Управление проектами Группы в части строительства. В основном, это объекты инфраструктуры районов Крайнего Севера и Дальнего Востока: ⁃ вахтовые поселки. ⁃ ",
+        "Ссылка": "https://api.hh.ru/vacancies/96920953?host=hh.ru"
     },
     {
-        "id": "96500960",
-        "premium": false,
-        "name": "Руководитель проекта (строительство завода)",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 400000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": true
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-04-09T10:28:49+0300",
-        "created_at": "2024-04-09T10:28:49+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=96500960",
-        "branding": {
-            "type": "MAKEUP",
-            "tariff": null
-        },
-        "show_logo_in_search": true,
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/96500960?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/96500960",
-        "relations": [],
-        "employer": {
-            "id": "20106",
-            "name": "Благо, Компания",
-            "url": "https://api.hh.ru/employers/20106",
-            "alternate_url": "https://hh.ru/employer/20106",
-            "logo_urls": {
-                "90": "https://img.hhcdn.ru/employer-logo/2055610.jpeg",
-                "original": "https://img.hhcdn.ru/employer-logo-original/403383.jpg",
-                "240": "https://img.hhcdn.ru/employer-logo/2055611.jpeg"
-            },
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=20106",
-            "accredited_it_employer": false,
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "Высшее образование (ПГС). Опыт полного цикла строительства производственной площадки с нуля. Высокий уровень организационных и управленческих компетенций. Знание оборудования, технологии...",
-            "responsibility": "Включение в работу на этапе проектирования (согласованием и получением разрешительной документации занимается отдельное подразделение Компании). Профессиональное участие в разработке на..."
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "fullDay",
-            "name": "Полный день"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "108",
-                "name": "Руководитель строительного проекта"
-            }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-            "id": "moreThan6",
-            "name": "Более 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Первый заместитель Финансового Директора Холдинга",
+        "Регион": "Москва",
+        "Зарплата от": 400000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Наш главный ресурс - команда единомышленников и целеустремленных профессионалов, обладающих обширными практическими знаниями и результативным опытом работы в различных отраслях, использующих...",
+        "Обязанности": "Формирование управленческих и финансовых отчетов и их глубокий анализ. - Эффективное управление денежными средствами: Ликвидация кассовых разрывов. Формирование платежного календаря. ",
+        "Ссылка": "https://api.hh.ru/vacancies/96748713?host=hh.ru"
     },
     {
-        "id": "96697057",
-        "premium": false,
-        "name": "Эксперт отдела по управлению технологической безопасностью",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 400000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": false
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-04-11T10:50:11+0300",
-        "created_at": "2024-04-11T10:50:11+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=96697057",
-        "show_logo_in_search": null,
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/96697057?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/96697057",
-        "relations": [],
-        "employer": {
-            "id": "1068",
-            "name": "Cornerstone Russia",
-            "url": "https://api.hh.ru/employers/1068",
-            "alternate_url": "https://hh.ru/employer/1068",
-            "logo_urls": {
-                "240": "https://img.hhcdn.ru/employer-logo/1643847.jpeg",
-                "original": "https://img.hhcdn.ru/employer-logo-original/300368.jpg",
-                "90": "https://img.hhcdn.ru/employer-logo/1643846.jpeg"
-            },
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=1068",
-            "accredited_it_employer": false,
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "Опыт в области управления безопасностью производственных процессов на предприятиях нефтегазового сектора.",
-            "responsibility": "Оказывает методологическую поддержку структурным подразделениям Компании в части обеспечения заданного уровня технологической безопасности на производственных объектах. Проводит аудиты по направлению..."
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "fullDay",
-            "name": "Полный день"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "40",
-                "name": "Другое"
-            }
-        ],
-        "accept_incomplete_resumes": true,
-        "experience": {
-            "id": "between3And6",
-            "name": "От 3 до 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Руководитель проекта (строительство завода)",
+        "Регион": "Москва",
+        "Зарплата от": 400000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Высшее образование (ПГС). Опыт полного цикла строительства производственной площадки с нуля. Высокий уровень организационных и управленческих компетенций. Знание оборудования, технологии...",
+        "Обязанности": "Включение в работу на этапе проектирования (согласованием и получением разрешительной документации занимается отдельное подразделение Компании). Профессиональное участие в разработке на...",
+        "Ссылка": "https://api.hh.ru/vacancies/96500960?host=hh.ru"
     },
     {
-        "id": "96549017",
-        "premium": false,
-        "name": "Директор по эксплуатации",
-        "department": null,
-        "has_test": false,
-        "response_letter_required": false,
-        "area": {
-            "id": "1",
-            "name": "Москва",
-            "url": "https://api.hh.ru/areas/1"
-        },
-        "salary": {
-            "from": 350000,
-            "to": "Не указано",
-            "currency": "RUR",
-            "gross": false
-        },
-        "type": {
-            "id": "open",
-            "name": "Открытая"
-        },
-        "address": null,
-        "response_url": null,
-        "sort_point_distance": null,
-        "published_at": "2024-04-09T18:00:52+0300",
-        "created_at": "2024-04-09T18:00:52+0300",
-        "archived": false,
-        "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=96549017",
-        "show_logo_in_search": null,
-        "insider_interview": null,
-        "url": "https://api.hh.ru/vacancies/96549017?host=hh.ru",
-        "alternate_url": "https://hh.ru/vacancy/96549017",
-        "relations": [],
-        "employer": {
-            "id": "3350812",
-            "name": "Any Service",
-            "url": "https://api.hh.ru/employers/3350812",
-            "alternate_url": "https://hh.ru/employer/3350812",
-            "logo_urls": {
-                "240": "https://img.hhcdn.ru/employer-logo/2930281.jpeg",
-                "90": "https://img.hhcdn.ru/employer-logo/2930280.jpeg",
-                "original": "https://img.hhcdn.ru/employer-logo-original/622282.jpg"
-            },
-            "vacancies_url": "https://api.hh.ru/vacancies?employer_id=3350812",
-            "accredited_it_employer": false,
-            "trusted": true
-        },
-        "snippet": {
-            "requirement": "Высшее техническое образование. Опыт управления службами эксплуатации не менее 7 лет. Опыт в сферах: строительство и ремонты, пищевое оборудование, электросети. ",
-            "responsibility": "Контроль и постановка задач по подразделениям служб эксплуатации на пищевых производствах компании по всей РФ. Разработка проектов модернизаций пищевых производств..."
-        },
-        "contacts": null,
-        "schedule": {
-            "id": "fullDay",
-            "name": "Полный день"
-        },
-        "working_days": [],
-        "working_time_intervals": [],
-        "working_time_modes": [],
-        "accept_temporary": false,
-        "professional_roles": [
-            {
-                "id": "46",
-                "name": "Инженер по эксплуатации"
-            }
-        ],
-        "accept_incomplete_resumes": false,
-        "experience": {
-            "id": "between3And6",
-            "name": "От 3 до 6 лет"
-        },
-        "employment": {
-            "id": "full",
-            "name": "Полная занятость"
-        },
-        "adv_response_url": null,
-        "is_adv_vacancy": false,
-        "adv_context": null
+        "Вакансия": "Директор по развитию бизнеса",
+        "Регион": "Москва",
+        "Зарплата от": 400000,
+        "Зарплата до": "Не указано",
+        "Валюта зарплаты": "RUR",
+        "Комментарий": "Успешный опыт работы на аналогичной должности в крупных продуктовых компаниях (розница, опт, ). Понимание рынка и конкурентной среды. Опыт управления всеми...",
+        "Обязанности": "Полный контроль всей компании и распределение ресурсов . Открытие новых магазинов, планируется около 300 магазинов в Краснодарском крае. Руководство усилением бренда...",
+        "Ссылка": "https://api.hh.ru/vacancies/96896213?host=hh.ru"
     }
 ]
