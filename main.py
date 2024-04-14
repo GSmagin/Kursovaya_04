@@ -1,51 +1,56 @@
-from src.class_api import *
+from src.utils import create_vacancies
+from src.class_api import ClassAPIHH, ClassAPIHHR
 from src.class_file import ClassFile
-from src.class_vacancies_collection import *
-
-from src.class_vacancies_hh import VacanciesHH
+from confing import DIR_JSON_VACANCIES, DIR_JSON_VACANCIES_SORT, DIR_JSON_VACANCIES_SORT_TXT
 
 
 def main():
     # Запрос информации для отправки запроса на сервер HH API
-    name_vacancy = input('Введите название вакансии: ')
-    ClassAPIHHR().get_api()
-    name_region = input('\nВведите название id региона (по умолчанию Москва): \n')
+    name_vacancy = str(input('Введите название вакансии: '))
+    name_region = str(input('Введите название id региона (по умолчанию Москва)\n'
+                            'N вызвать список регионов с ID: '))
+
     if not name_region:
         name_region = '1'
-    vacancy_out_api = ClassAPIHH().get_api(name_vacancy, name_region)
-    # print(f"\nКоличество загруженных вакансий {len(vacancy_out_api.get('name'))}")  # количество вакансий
-    # удаление файла vacancies.json
-    # ClassFile.delete_from_file()
+    elif name_region == 'N':
+        ClassAPIHHR.get_api_region()
+        name_region = str(input('Введите название id региона (по умолчанию Москва): \n'))
 
-    # сохранение в файл vacancies.json результата запроса c HH API
-    ClassFile.save_to_file(vacancy_out_api)
+    number_page = int(input('Введите сколько страниц загрузить (в одной странице 100 вакансий): '))
+    if number_page is None:
+        number_page = 1
 
-    # загрузка из файла vacancies.json результата запроса
-    json_to_vacancies = ClassFile.load_from_file()
-    # Пример использования:
+    vacancy_out_api = ClassAPIHH().api_get_pages(name_vacancy, name_region, number_page)
 
-    # Создание экземпляров вакансий
-    vacancy1 = VacanciesHH("Python Developer", "Moscow", 100000, 150000, "RUB", "Experience with Python is required.", "Developing Python applications.", "https://example.com/vacancy1")
-    vacancy2 = VacanciesHH("Java Developer", "St. Petersburg", 90000, 140000, "RUB", "Java skills are necessary.", "Java development tasks.", "https://example.com/vacancy2")
+    # Сохранение в файл JSON
+    ClassFile().save_to_file(vacancy_out_api, DIR_JSON_VACANCIES)
 
-    # Создание коллекции и добавление вакансий
-    collection = VacanciesCollection()
-    collection.add_vacancy(vacancy1)
-    collection.add_vacancy(vacancy2)
+    # Загрузка из файла JSON
+    load_from_file = ClassFile().load_from_file(DIR_JSON_VACANCIES)
 
-    # Получение списка вакансий для конкретного региона
-    moscow_vacancies = collection.get_vacancies_by_region("Moscow")
-    print("Вакансии в регионе Moscow:", moscow_vacancies)
+    # Создание экземпляров вакансий и добавление в коллекцию
+    collection = create_vacancies(load_from_file)
+    print(f"В коллекции загружено вакансий: {collection.__len__()}")
 
-    # Получение списка вакансий с зарплатой выше определенного порога
-    high_salary_vacancies = collection.get_vacancies_with_salary_above(120)
-    print(f"\nВакансии с зарплатой выше 120: {high_salary_vacancies}")
+    collection.sort_vacancies_by_salary()
 
+    min_salary = int(input('Введите минимальную зарплату вакансии: '))
+    if not min_salary:
+        min_salary = 0
 
+    collection.filter_salary_from(min_salary)
 
+    print(f"В коллекции вакансий: {collection.__len__()}")
 
+    n = int(input('Введите сколько вакансий выбрать: '))
 
+    collection.number_of_selected(n)
+    print(f"В коллекции выбрано вакансий: {collection.__len__()}")
+    for vacancy in collection.__repr__():
+        print(vacancy)
 
+    collection.save_to_json(DIR_JSON_VACANCIES_SORT)
+    collection.save_to_txt(DIR_JSON_VACANCIES_SORT_TXT)
 
 
 if __name__ == "__main__":

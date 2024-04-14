@@ -1,3 +1,6 @@
+import json
+
+
 class VacanciesCollection:
     """
     Класс для хранения и работы с коллекцией вакансий.
@@ -7,15 +10,35 @@ class VacanciesCollection:
         """
         Инициализирует пустую коллекцию вакансий.
         """
-        self.vacancies = set()
+        self.vacancies = list()
 
-    def add_vacancy(self, vacancy):
+    def __add__(self, vacancy):
         """
         Добавляет вакансию в коллекцию.
-
-        :param vacancy: Экземпляр класса VacanciesHH.
         """
-        self.vacancies.add(vacancy)
+        self.vacancies.append(vacancy)
+
+    def __repr__(self):
+        """
+        Возвращает строку с текущим состоянием коллекции вакансий.
+        """
+        # return f"{self.vacancies}"
+        region_vacancies = [f"Вакансия: {vacancy.name},\n"
+                            f"Регион: {vacancy.area_name},\n"
+                            f"Зарплата от: {vacancy.salary_from},\n"
+                            f"Зарплата до: {vacancy.salary_to},\n"
+                            f"Валюта зарплаты: {vacancy.salary_currency},\n"
+                            f"Комментарий: {vacancy.snippet_requirement},\n"
+                            f"Обязанности: {vacancy.snippet_responsibility},\n"
+                            f"Ссылка: {vacancy.url}\n"
+                            for vacancy in self.vacancies]
+        return region_vacancies
+
+    def __len__(self):
+        """
+        Возвращает количество вакансий в коллекции.
+        """
+        return len(self.vacancies)
 
     def remove_vacancy(self, vacancy):
         """
@@ -25,29 +48,80 @@ class VacanciesCollection:
         """
         self.vacancies.remove(vacancy)
 
-    def get_vacancies_by_region(self, region_name):
+    def filter_salary_from(self, min_salary):
         """
-        Возвращает список вакансий для указанного региона.
+        Фильтрует вакансии по минимальной зарплате.
+        """
+        self.vacancies = [v for v in self.vacancies if v.salary_from >= min_salary]
 
-        :param region_name: Название региона.
-        :return: Список вакансий для указанного региона.
+    def filter_salary_to(self, salary_threshold):
         """
-        return [v for v in self.vacancies if v.area_name == region_name]
+       Фильтрует вакансии по максимальной зарплате.
+        """
+        self.vacancies = [v for v in self.vacancies if v.salary_from >= salary_threshold]
 
-    def get_vacancies_with_salary_above(self, salary_threshold):
+    def sort_vacancies_by_salary(self):
         """
-        Возвращает список вакансий с зарплатой выше указанного порога.
+        Сортирует вакансии в коллекции.
+        """
+        self.vacancies.sort(key=lambda v: v.salary_from if v.salary_from is not None else float('inf'), reverse=True)
 
-        :param salary_threshold: Пороговая зарплата.
-        :return: Список вакансий с зарплатой выше указанного порога.
+    def get_vacancies_print(self) -> list:
         """
-        return [v for v in self.vacancies if v.salary_from > salary_threshold]
+        Возвращает список информацию о вакансиях.
+        """
+        region_vacancies = [f"Вакансия: {vacancy.name},\n"
+                            f"Регион: {vacancy.area_name},\n"
+                            f"Зарплата от: {vacancy.salary_from},\n"
+                            f"Зарплата до: {vacancy.salary_to},\n"
+                            f"Валюта зарплаты: {vacancy.salary_currency},\n"
+                            f"Комментарий: {vacancy.snippet_requirement},\n"
+                            f"Обязанности: {vacancy.snippet_responsibility},\n"
+                            f"Ссылка: {vacancy.url}\n"
+                            for vacancy in self.vacancies]
+        return region_vacancies
 
-    def get_vacancies_with_salary_below(self, salary_threshold):
+    def number_of_selected(self, n=None):
         """
-        Возвращает список вакансий с зарплатой ниже указанного порога.
+        Возвращает количество выбранных вакансий.
+        """
+        self.vacancies = self.vacancies[0:n]
+        return self.vacancies
 
-        :param salary_threshold: Пороговая зарплата.
-        :return: Список вакансий с зарплатой ниже указанного порога.
+    def save_to_json(self, file_path):
         """
-        return [v for v in self.vacancies if v.salary_to < salary_threshold]
+        Сохраняет данные о вакансиях в JSON файл.
+
+        :param file_path: Путь к JSON файлу.
+        """
+        vacancies_data = []
+        for vacancy in self.vacancies:
+            vacancy_info = {
+                "name": vacancy.name,
+                "area": {"name": vacancy.area_name},
+                "salary": {"from": vacancy.salary_from, "to": vacancy.salary_to, "currency": vacancy.salary_currency},
+                "snippet": {"requirement": vacancy.snippet_requirement,
+                            "responsibility": vacancy.snippet_responsibility},
+                "alternate_url": vacancy.url
+            }
+            vacancies_data.append(vacancy_info)
+
+        with open(file_path, 'w', encoding='utf-8') as file:
+            json.dump(vacancies_data, file, ensure_ascii=False, indent=4)
+
+    def save_to_txt(self, file_path):
+        """
+        Сохраняет данные о вакансиях в текстовый файл.
+
+        :param file_path: Путь к текстовому файлу.
+        """
+        with open(file_path, 'w', encoding='utf-8') as file:
+            for vacancy in self.vacancies:
+                file.write(f"Вакансия: {vacancy.name},\n"
+                           f"Регион: {vacancy.area_name},\n"
+                           f"Зарплата от: {vacancy.salary_from},\n"
+                           f"Зарплата до: {vacancy.salary_to},\n"
+                           f"Валюта зарплаты: {vacancy.salary_currency},\n"
+                           f"Комментарий: {vacancy.snippet_requirement},\n"
+                           f"Обязанности: {vacancy.snippet_responsibility},\n"
+                           f"Ссылка: {vacancy.url}\n\n")

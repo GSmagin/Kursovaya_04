@@ -6,16 +6,17 @@ class VacanciesHH:
     def __init__(self, name, area_name, salary_from, salary_to, salary_currency,
                  snippet_requirement, snippet_responsibility, url):
         """
-        :param name Вакансия
-        :param area_name Регион
-        :param salary_from Зарплата от
-        :param salary_to Зарплата до
-        :param salary_currency Валюта зарплаты
-        :param snippet_requirement Комментарий
-        :param snippet_responsibility Обязанности
-        :param url Ссылка на вакансию
-        """
+        Инициализирует объект класса VacanciesHH.
 
+        :param name: Название вакансии.
+        :param area_name: Название региона.
+        :param salary_from: Минимальная зарплата.
+        :param salary_to: Максимальная зарплата.
+        :param salary_currency: Валюта зарплаты.
+        :param snippet_requirement: Требования к кандидату.
+        :param snippet_responsibility: Обязанности.
+        :param url: Ссылка на вакансию.
+        """
         self.name = name
         self.area_name = area_name
         self.salary_from = salary_from

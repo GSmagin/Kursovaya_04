@@ -1,21 +1,27 @@
+from src.class_vacancies_collection import VacanciesCollection
+from src.class_vacancieshh import VacanciesHH
 
-from src.class_vacancies_hh import VacanciesHH
 
-# def recording_file(filename):
-#     with open('../data/vacancies.json', 'w') as file:
-#         json.dump(good_vacancy, file, ensure_ascii=False, default=lambda x: x.__dict__)
+def create_vacancies(vacancies_data):
+    """
+    Создает и возвращает список экземпляров класса VacanciesHH на основе данных вакансий.
 
-def instance_vacancy_hh(data):
-    instance_vacancy = []
-    for i in data:
-        instance_vacancy.append(VacanciesHH(
-            i.get('name'),  # Вакансия
-            i.get('area').get('name'),  # Регион
-            i.get('salary').get('from'),  # Зарплата от
-            i.get('salary').get('to'),  # Зарплата до
-            i.get('salary').get('currency'),  # Валюта зарплаты
-            i.get('snippet').get('requirement'),  # Комментарий
-            i.get('snippet').get('responsibility'),  # Обязанности
-            i.get('employer').get('vacancies_url')))  # Ссылка на вакансию
-        return instance_vacancy
-
+    :param vacancies_data: Список данных вакансий в формате JSON.
+    :return: Список экземпляров класса VacanciesHH.
+    """
+    collection = VacanciesCollection()
+    # vacancies = []
+    for vacancy_info in vacancies_data:
+        name = vacancy_info.get("name")
+        area_name = vacancy_info.get("area").get("name")
+        salary_from = vacancy_info.get("salary").get("from")
+        salary_to = vacancy_info.get("salary").get("to")
+        salary_currency = vacancy_info.get("salary").get("currency")
+        snippet_requirement = vacancy_info.get("snippet").get("requirement")
+        snippet_responsibility = vacancy_info.get("snippet").get("responsibility")
+        url = vacancy_info.get("alternate_url")
+        vacancy = VacanciesHH(name, area_name, salary_from, salary_to, salary_currency,
+                              snippet_requirement, snippet_responsibility, url)
+        collection.__add__(vacancy)
+        # vacancies.append(vacancy)
+    return collection
