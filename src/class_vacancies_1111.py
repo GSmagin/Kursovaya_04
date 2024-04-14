@@ -97,7 +97,7 @@ class VacanciesHH:
     def validate_salary_to(self):
         for vacancy in self.items:
             if vacancy["salary"]["to"] is None:
-                vacancy["salary"]["to"] = "Не указано"
+                vacancy["salary"]["to"] = "0"
 
     def validate_snippet_requirement(self):
         for vacancy in self.items:

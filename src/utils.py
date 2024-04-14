@@ -1,7 +1,5 @@
-from src.class_api import ClassAPIHH
-from src.class_file import ClassFile
-from src.class_vacancies_hh_1111 import VacanciesHH
-import re
+
+from src.class_vacancies_hh import VacanciesHH
 
 # def recording_file(filename):
 #     with open('../data/vacancies.json', 'w') as file:
