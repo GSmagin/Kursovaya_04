@@ -2,23 +2,25 @@ from src.utils import create_vacancies
 from src.class_api import ClassAPIHH, ClassAPIHHR
 from src.class_file import ClassFile
 from confing import DIR_JSON_VACANCIES, DIR_JSON_VACANCIES_SORT, DIR_JSON_VACANCIES_SORT_TXT
+from src.utils import validate_input_int
 
 
 def main():
     # Запрос информации для отправки запроса на сервер HH API
     name_vacancy = str(input('Введите название вакансии: '))
     name_region = str(input('Введите название id региона (по умолчанию Москва)\n'
-                            'N вызвать список регионов с ID: '))
+                            '000 вызвать список регионов с ID: '))
 
     if not name_region:
         name_region = '1'
     elif name_region == 'N':
         ClassAPIHHR.get_api_region()
-        name_region = str(input('Введите название id региона (по умолчанию Москва): \n'))
+        print('Введите название id региона (по умолчанию Москва): \n')
+        name_region = validate_input_int(input())
 
-    number_page = int(input('Введите сколько страниц загрузить (в одной странице 100 вакансий): '))
-    if number_page is None:
-        number_page = 1
+    print('Введите сколько страниц загрузить (в одной странице 100 вакансий)\n'
+          'максимум 20 страниц: ')
+    number_page = validate_input_int(input())
 
     vacancy_out_api = ClassAPIHH().api_get_pages(name_vacancy, name_region, number_page)
 
@@ -34,16 +36,22 @@ def main():
 
     collection.sort_vacancies_by_salary()
 
-    min_salary = int(input('Введите минимальную зарплату вакансии: '))
-    if not min_salary:
+    print('Введите минимальную зарплату вакансии: ')
+    min_salary = validate_input_int(input())
+
+    if min_salary is None:
+        print('Введите минимальную зарплату вакансии: ')
+
         min_salary = 0
 
     collection.filter_salary_from(min_salary)
 
     print(f"В коллекции вакансий: {collection.__len__()}")
 
-    n = int(input('Введите сколько вакансий выбрать: '))
-
+    print('Введите сколько вакансий вывести: ')
+    n = validate_input_int(input())
+    if n is None:
+        n = 1
     collection.number_of_selected(n)
     print(f"В коллекции выбрано вакансий: {collection.__len__()}")
     for vacancy in collection.__repr__():

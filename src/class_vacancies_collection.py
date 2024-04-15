@@ -24,7 +24,7 @@ class VacanciesCollection:
         """
         # return f"{self.vacancies}"
         region_vacancies = [f"Вакансия: {vacancy.name},\n"
-                            f"Регион: {vacancy.area_name},\n"
+                            f"Город: {vacancy.area_name},\n"
                             f"Зарплата от: {vacancy.salary_from},\n"
                             f"Зарплата до: {vacancy.salary_to},\n"
                             f"Валюта зарплаты: {vacancy.salary_currency},\n"
@@ -54,11 +54,12 @@ class VacanciesCollection:
         """
         self.vacancies = [v for v in self.vacancies if v.salary_from >= min_salary]
 
-    def filter_salary_to(self, salary_threshold):
+    def filter_salary_to(self, max_salary):
         """
        Фильтрует вакансии по максимальной зарплате.
         """
-        self.vacancies = [v for v in self.vacancies if v.salary_from >= salary_threshold]
+        #self.vacancies = [v for v in self.vacancies if v.salary_to <= max_salary]
+        #self.vacancies = [v for v in self.vacancies if v.salary_to is None or int(v.salary_to) <= max_salary]
 
     def sort_vacancies_by_salary(self):
         """
@@ -71,7 +72,7 @@ class VacanciesCollection:
         Возвращает список информацию о вакансиях.
         """
         region_vacancies = [f"Вакансия: {vacancy.name},\n"
-                            f"Регион: {vacancy.area_name},\n"
+                            f"Город: {vacancy.area_name},\n"
                             f"Зарплата от: {vacancy.salary_from},\n"
                             f"Зарплата до: {vacancy.salary_to},\n"
                             f"Валюта зарплаты: {vacancy.salary_currency},\n"
@@ -118,7 +119,7 @@ class VacanciesCollection:
         with open(file_path, 'w', encoding='utf-8') as file:
             for vacancy in self.vacancies:
                 file.write(f"Вакансия: {vacancy.name},\n"
-                           f"Регион: {vacancy.area_name},\n"
+                           f"Город: {vacancy.area_name},\n"
                            f"Зарплата от: {vacancy.salary_from},\n"
                            f"Зарплата до: {vacancy.salary_to},\n"
                            f"Валюта зарплаты: {vacancy.salary_currency},\n"

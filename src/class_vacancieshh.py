@@ -9,7 +9,7 @@ class VacanciesHH:
         Инициализирует объект класса VacanciesHH.
 
         :param name: Название вакансии.
-        :param area_name: Название региона.
+        :param area_name: Название город.
         :param salary_from: Минимальная зарплата.
         :param salary_to: Максимальная зарплата.
         :param salary_currency: Валюта зарплаты.
@@ -50,3 +50,4 @@ class VacanciesHH:
         """
         if not self.salary_to:
             self.salary_to = 0
+

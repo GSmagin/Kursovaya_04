@@ -1,5 +1,6 @@
 from src.class_vacancies_collection import VacanciesCollection
 from src.class_vacancieshh import VacanciesHH
+from src.class_api import ClassAPIHHR
 
 
 def create_vacancies(vacancies_data):
@@ -25,3 +26,19 @@ def create_vacancies(vacancies_data):
         collection.__add__(vacancy)
         # vacancies.append(vacancy)
     return collection
+
+
+def form_region_113(region_text):
+    get_api_region = ClassAPIHHR.get_api_region()
+    return get_api_region.get(region_text)
+
+
+def validate_input_int(user_input: str) -> int:
+    """ Валидация введенного пользователем числа """
+
+    try:
+        user_input = int(user_input.strip())
+        return user_input
+    except ValueError:
+        user_input = input('Неверный ввод, попробуйте еще раз ввести цифру: ')
+        return validate_input_int(user_input)

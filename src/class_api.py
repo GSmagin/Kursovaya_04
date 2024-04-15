@@ -1,6 +1,7 @@
 from typing import List, Any, Dict
 from abc import ABC, abstractmethod
 import requests
+import json
 
 
 class ClassAPI(ABC):
@@ -46,10 +47,16 @@ class ClassAPIHHR:
     """Подключается к api.hh.ru и получает id регионов"""
 
     @staticmethod
-    def get_api_region(side="113") -> dict:
+    def get_api_region(side="113"):
         url = 'https://api.hh.ru/areas/' + side
         response = requests.get(url)
         for i in response.json().get('areas'):
             print(f"id={i.get('id')} {i.get('name')} ")
+        resp = response.json().get('areas')
+        dict_regions = {}
+        for i in resp:
+            dict_regions[i.get('name')] = i.get('id')
+        return dict_regions
 
-        return response.json()
+
+
