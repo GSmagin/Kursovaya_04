@@ -95,6 +95,7 @@ class VacanciesCollection:
 
         :param file_path: Путь к JSON файлу.
         """
+        print("save_to_json")
         vacancies_data = []
         for vacancy in self.vacancies:
             vacancy_info = {

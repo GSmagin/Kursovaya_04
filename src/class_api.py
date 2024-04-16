@@ -58,5 +58,6 @@ class ClassAPIHHR:
             dict_regions[i.get('name')] = i.get('id')
         return dict_regions
 
-
-
+#
+# reg = ClassAPIHHR.get_api_region()
+# print(reg)

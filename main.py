@@ -2,24 +2,28 @@ from src.utils import create_vacancies
 from src.class_api import ClassAPIHH, ClassAPIHHR
 from src.class_file import ClassFile
 from confing import DIR_JSON_VACANCIES, DIR_JSON_VACANCIES_SORT, DIR_JSON_VACANCIES_SORT_TXT
-from src.utils import validate_input_int
+from src.utils import *
 
 
 def main():
     # Запрос информации для отправки запроса на сервер HH API
     name_vacancy = str(input('Введите название вакансии: '))
-    name_region = str(input('Введите название id региона (по умолчанию Москва)\n'
-                            '000 вызвать список регионов с ID: '))
 
-    if not name_region:
-        name_region = '1'
-    elif name_region == 'N':
-        ClassAPIHHR.get_api_region()
-        print('Введите название id региона (по умолчанию Москва): \n')
-        name_region = validate_input_int(input())
+    while True:
+        word_to_search = input("Введите название региона (или введите 0 для выхода): ")
+        if word_to_search == '0':
+            print("Выход из программы.")
+            quit()
+        else:
+            result = search_word(word_to_search)
+        if result:
+            name_region = result
+            break
+
+
 
     print('Введите сколько страниц загрузить (в одной странице 100 вакансий)\n'
-          'максимум 20 страниц: ')
+                        'максимум 20 страниц: ')
     number_page = validate_input_int(input())
 
     vacancy_out_api = ClassAPIHH().api_get_pages(name_vacancy, name_region, number_page)
