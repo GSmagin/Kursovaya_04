@@ -25,6 +25,9 @@ class ClassAPIHH(ClassAPI):
         url = 'https://api.hh.ru/vacancies'
         all_vacancies = []
 
+        if num_pages is None:
+            num_pages = 1
+
         for page_num in range(1, num_pages + 1):
             params = {
                 'text': word_search,  # Ключевое слово
@@ -47,8 +50,8 @@ class ClassAPIHHR:
     """Подключается к api.hh.ru и получает id регионов"""
 
     @staticmethod
-    def get_api_region(side="113"):
-        url = 'https://api.hh.ru/areas/' + side
+    def get_api_region():
+        url = 'https://api.hh.ru/areas/113'
         response = requests.get(url)
         for i in response.json().get('areas'):
             print(f"id={i.get('id')} {i.get('name')} ")
@@ -57,6 +60,19 @@ class ClassAPIHHR:
         for i in resp:
             dict_regions[i.get('name')] = i.get('id')
         return dict_regions
+
+    @staticmethod
+    def get_api_citi():
+        url = 'https://api.hh.ru/areas/113'
+        response = requests.get(url)
+        for i in response.json().get('areas'):
+            print(f"id={i.get('id')} {i.get('name')} ")
+        resp = response.json().get('areas')
+        dict_regions = {}
+        for i in resp:
+            dict_regions[i.get('name')] = i.get('id')
+        return dict_regions
+
 
 #
 # reg = ClassAPIHHR.get_api_region()

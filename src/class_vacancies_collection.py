@@ -54,18 +54,20 @@ class VacanciesCollection:
         """
         self.vacancies = [v for v in self.vacancies if v.salary_from >= min_salary]
 
-    def filter_salary_to(self, max_salary):
+    def filter_salary_from_and_to(self, max_salary):
         """
        Фильтрует вакансии по максимальной зарплате.
         """
-        #self.vacancies = [v for v in self.vacancies if v.salary_to <= max_salary]
-        #self.vacancies = [v for v in self.vacancies if v.salary_to is None or int(v.salary_to) <= max_salary]
+        # self.vacancies = [v for v in self.vacancies if v.salary_to <= max_salary]
+        # self.vacancies = [v for v in self.vacancies if v.salary_to is None or int(v.salary_to) <= max_salary]
+        self.vacancies = [v for v in self.vacancies if v.salary_from <= max_salary]
 
     def sort_vacancies_by_salary(self):
         """
         Сортирует вакансии в коллекции.
         """
         self.vacancies.sort(key=lambda v: v.salary_from if v.salary_from is not None else float('inf'), reverse=True)
+
 
     def get_vacancies_print(self) -> list:
         """
@@ -95,7 +97,6 @@ class VacanciesCollection:
 
         :param file_path: Путь к JSON файлу.
         """
-        print("save_to_json")
         vacancies_data = []
         for vacancy in self.vacancies:
             vacancy_info = {
