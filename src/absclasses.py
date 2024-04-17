@@ -2,6 +2,12 @@ import json
 from abc import ABC, abstractmethod
 
 
+class AbstractClassVacanciesHH:(ABC):
+
+    def validate_salary_from(self):
+        pass
+
+
 class AbstractClassAPI(ABC):
 
     __url: str
