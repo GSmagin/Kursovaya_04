@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 
 class VacanciesCollection:
@@ -30,6 +31,9 @@ class VacanciesCollection:
                             f"Валюта зарплаты: {vacancy.salary_currency},\n"
                             f"Комментарий: {vacancy.snippet_requirement},\n"
                             f"Обязанности: {vacancy.snippet_responsibility},\n"
+                            f"Дата публикации: {self.convert_date(vacancy.published_at)},\n"
+                            f"График работы: {vacancy.schedule_name},\n"
+                            f"Опыт работы: {vacancy.experience_name}\n"
                             f"Ссылка: {vacancy.url}\n"
                             for vacancy in self.vacancies]
         return region_vacancies
@@ -68,7 +72,6 @@ class VacanciesCollection:
         """
         self.vacancies.sort(key=lambda v: v.salary_from if v.salary_from is not None else float('inf'), reverse=True)
 
-
     def get_vacancies_print(self) -> list:
         """
         Возвращает список информацию о вакансиях.
@@ -80,6 +83,9 @@ class VacanciesCollection:
                             f"Валюта зарплаты: {vacancy.salary_currency},\n"
                             f"Комментарий: {vacancy.snippet_requirement},\n"
                             f"Обязанности: {vacancy.snippet_responsibility},\n"
+                            f"Дата публикации: {self.convert_date(vacancy.published_at)},\n"
+                            f"График работы: {vacancy.schedule_name},\n"
+                            f"Опыт работы: {vacancy.experience_name}\n"
                             f"Ссылка: {vacancy.url}\n"
                             for vacancy in self.vacancies]
         return region_vacancies
@@ -91,28 +97,19 @@ class VacanciesCollection:
         self.vacancies = self.vacancies[0:n]
         return self.vacancies
 
-    def save_to_json(self, file_path):
+    def save_to_json(self, file_path) -> None:
         """
         Сохраняет данные о вакансиях в JSON файл.
 
         :param file_path: Путь к JSON файлу.
         """
         vacancies_data = []
-        for vacancy in self.vacancies:
-            vacancy_info = {
-                "name": vacancy.name,
-                "area": {"name": vacancy.area_name},
-                "salary": {"from": vacancy.salary_from, "to": vacancy.salary_to, "currency": vacancy.salary_currency},
-                "snippet": {"requirement": vacancy.snippet_requirement,
-                            "responsibility": vacancy.snippet_responsibility},
-                "alternate_url": vacancy.url
-            }
-            vacancies_data.append(vacancy_info)
-
         with open(file_path, 'w', encoding='utf-8') as file:
+            for vacancy in self.vacancies:
+                vacancies_data.append(vacancy.__dict__)
             json.dump(vacancies_data, file, ensure_ascii=False, indent=4)
 
-    def save_to_txt(self, file_path):
+    def save_to_txt(self, file_path) -> None:
         """
         Сохраняет данные о вакансиях в текстовый файл.
 
@@ -127,4 +124,15 @@ class VacanciesCollection:
                            f"Валюта зарплаты: {vacancy.salary_currency},\n"
                            f"Комментарий: {vacancy.snippet_requirement},\n"
                            f"Обязанности: {vacancy.snippet_responsibility},\n"
+                           f"Дата публикации: {self.convert_date(vacancy.published_at)},\n"
+                           f"График работы: {vacancy.schedule_name},\n"
+                           f"Опыт работы: {vacancy.experience_name}\n"
                            f"Ссылка: {vacancy.url}\n\n")
+
+    @staticmethod
+    def convert_date(date_str):
+        # Преобразование строки в объект datetime
+        date_obj = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S%z")
+        # Форматирование даты в требуемый вид
+        formatted_date = date_obj.strftime("%Y-%m-%d %H:%M")
+        return formatted_date

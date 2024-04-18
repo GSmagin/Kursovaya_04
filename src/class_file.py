@@ -1,7 +1,7 @@
 import os
-from confing import DIR_JSON_VACANCIES, DIR_JSON_VACANCIES_SORT, DIR_JSON_VACANCIES_SORT_TXT
 import json
-from absclasses import AbstractClassFile
+from confing import DIR_JSON_VACANCIES, DIR_JSON_VACANCIES_SORT, DIR_JSON_VACANCIES_SORT_TXT
+from src.absclasses import AbstractClassFile
 
 
 class ClassFile(AbstractClassFile):

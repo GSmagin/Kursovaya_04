@@ -1,7 +1,6 @@
 import json
-
+import re
 import requests
-
 from src.class_vacancies_collection import VacanciesCollection
 from src.class_vacancieshh import VacanciesHH
 from src.class_api import ClassAPIHHR
@@ -15,7 +14,6 @@ def create_vacancies(vacancies_data):
     :return: Список экземпляров класса VacanciesHH.
     """
     collection = VacanciesCollection()
-    # vacancies = []
     for vacancy_info in vacancies_data:
         name = vacancy_info.get("name")
         area_name = vacancy_info.get("area").get("name")
@@ -24,11 +22,14 @@ def create_vacancies(vacancies_data):
         salary_currency = vacancy_info.get("salary").get("currency")
         snippet_requirement = vacancy_info.get("snippet").get("requirement")
         snippet_responsibility = vacancy_info.get("snippet").get("responsibility")
+        published_at = vacancy_info.get("published_at")
+        schedule_name = vacancy_info.get("schedule").get("name")
+        experience_name = vacancy_info.get("experience").get("name")
         url = vacancy_info.get("alternate_url")
         vacancy = VacanciesHH(name, area_name, salary_from, salary_to, salary_currency,
-                              snippet_requirement, snippet_responsibility, url)
+                              snippet_requirement, snippet_responsibility, published_at,
+                              schedule_name, experience_name, url)
         collection.__add__(vacancy)
-        # vacancies.append(vacancy)
     return collection
 
 
@@ -47,6 +48,21 @@ def validate_input_int(user_input: str) -> int:
         user_input = input('Неверный ввод, попробуйте еще раз ввести цифру: ')
         return validate_input_int(user_input)
 
+
+def validate_input_str():
+    """ Валидация введенных пользователем строк """
+    pattern = re.compile(r'^[a-zA-Zа-яА-Я\']+')
+    while True:
+        user_input = input("Введите название вакансии: ")
+        if any(char.isdigit() for char in user_input):
+            print("Пожалуйста, введите только слова, без цифр.")
+        elif not re.match(pattern, user_input):
+            print("Пожалуйста, введите только слова.")
+        else:
+            filtered_words = [word.group(0) for word in re.finditer(pattern, user_input)]
+            return filtered_words
+
+
 def get_api_reg(side="113"):
     url = 'https://api.hh.ru/areas/' + side
     response = requests.get(url)
@@ -61,7 +77,6 @@ def search_word(word):
 
     dictionary = get_api_reg()
     word = word.capitalize()  # Преобразование в верхний регистр
-    print(word)
     # Проверяем, есть ли слово в качестве ключа в словаре
     if word in dictionary:
         return dictionary[word]
@@ -92,24 +107,10 @@ def search_word(word):
             return None
 
 
-# Пример использования функции в бесконечном цикле
-my_dictionary = {"apple": "яблоко", "banana": "банан", "orange": "апельсин"}
-
-# while True:
-#     word_to_search = input("Введите слово для поиска (или введите 0 для выхода): ")
-#     if word_to_search == '0':
-#         print("Выход из программы.")
-#         break
-#     result = search_word(word_to_search)
-#     if result:
-#         print(f"Результат: {result}")
-
 def save_to_json_file(vacancies, file_path):
-    """
-    Сохраняет данные о вакансиях в JSON файл.
-
-    :param file_path: Путь к JSON файлу.
-    """
+    """Сохраняет данные о вакансиях в JSON файл.
+    :param vacancies: Список экземпляров класса VacanciesHH.
+    :param file_path: Путь к JSON файлу."""
     print("save_to_json")
     vacancies_data = []
     for vacancy in vacancies:
@@ -126,6 +127,3 @@ def save_to_json_file(vacancies, file_path):
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(vacancies_data, file, ensure_ascii=False, indent=4)
 
-
-# for i, v in get_api_reg().items():
-#     print(i, v)

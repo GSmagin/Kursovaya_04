@@ -1,50 +1,46 @@
 from src.class_api import ClassAPIHH
 from src.class_file import ClassFile
 from confing import DIR_JSON_VACANCIES, DIR_JSON_VACANCIES_SORT, DIR_JSON_VACANCIES_SORT_TXT
-from src.utils import *
+from src.utils import validate_input_int, validate_input_str, create_vacancies, search_word
 from src.class_vacancies_collection import VacanciesCollection
 
 
 class InteractiveMenu:
     def __init__(self):
-        self.vacancy_title = int
-        self.min_salary = int
-        self.max_salary = int
-        self.region = str
-        self.pages_to_parse = int
+        self.vacancy_title = None
+        self.min_salary = None
+        self.max_salary = None
+        self.region = None  # default Москва
+        self.pages_to_parse = 1
+        self.top_vacancies = None
         self.collection = VacanciesCollection()
 
-    def show_menu(self):
-        print("\nГлавное меню:")
-        print("1. Задать параметры для парсинга")
-        print("2. Запустить парсинг")
-        print("3. Отобразить результат")
-        print("4. Отсортировать зарплаты по убыванию")
-        print("5. Применить фильтр минимальной ЗП от")
-        print("6. Применить фильтр максимальной ЗП от")
-        print("7. Сколько из ТОП вакансий вывести")
-        print("8. Сохранить результат в файл и выйти")
-        print("9. Выход")
+    def set_parsing_parameters(self):
+        print("\n1. Задать название вакансии")
+        # Проверка на валидность вакансии
+        self.vacancy_title = validate_input_str()[0]
+        print("\n2. Задать регион")
+        self.set_region()
+        print("\n3. Задать количество страниц для парсинга(1 страница - 100 вакансий)")
+        self.pages_to_parse = validate_input_int(input("Введите количество страниц: "))
+        print("\n4. Начать парсинг")
+        self.start_parsing()
 
-# ==подменю==
-    def set_vacancy_title(self):
-        # 1. Задать название вакансии
-        self.vacancy_title = input("Введите название вакансии: ")
-
-    def set_min_salary(self):
-        # 2. Задать минимальную ЗП для парсинга
-        self.min_salary = int(input("Введите минимальную зарплату: "))
-
-    def set_max_salary(self):
-        # 3. Задать максимальную ЗП для парсинга
-        self.max_salary = int(input("Введите максимальную зарплату: "))
+    def start_parsing(self):
+        # реализация начала парсинга
+        print("Парсинг запущен...")
+        vacancy_out_api = ClassAPIHH().api_get_pages(self.vacancy_title, self.region, self.pages_to_parse)
+        ClassFile().save_to_file(vacancy_out_api, DIR_JSON_VACANCIES)  # Сохранение в файл
+        load_from_file = ClassFile().load_from_file(DIR_JSON_VACANCIES)  # Загрузка из файла
+        # Создание экземпляров вакансий и добавление в коллекцию
+        self.collection = create_vacancies(load_from_file)
+        print(f"\nСобрано вакансий: {self.collection.__len__()}")
 
     def set_region(self):
-        # 4. Задать регион
-        # self.region = input("Введите регион: ")
+        # 4. регион
         while True:
             word_to_search = input("Введите название региона (или введите 0 для выхода): ")
-            if word_to_search == '0':
+            if word_to_search == "0":
                 print("Выход из программы.")
                 break
             else:
@@ -53,119 +49,117 @@ class InteractiveMenu:
                 self.region = result
                 break
 
-    def set_pages_to_parse(self):
-        # 5. Задать количество страниц для парсинга
-        self.pages_to_parse = int(input("Введите количество страниц для парсинга: "))
+    def filter_menu(self):
+        while True:
+            print("\nМеню фильтрации:")
+            print("1. Задать минимальную ЗП от")
+            print("2. Задать максимальную ЗП от")
+            print("3. Отсортировать зарплаты по убыванию")
+            print("4. Применить фильтр минимальной ЗП от")
+            print("5. Применить фильтр максимальной ЗП от")
+            print("6. Отобразить результат")
+            print("7. Сколько из ТОП вакансий оставить")
+            print("8. Выход в главное меню")
 
-    def start_parsing(self):
-        # 2. Начать парсинг
-        # 2. Запустить парсинг
-        print("Парсинг запущен...")
-        vacancy_out_api = ClassAPIHH().api_get_pages(self.vacancy_title, self.region, self.pages_to_parse)
-        ClassFile().save_to_file(vacancy_out_api, DIR_JSON_VACANCIES)  # Сохранение в файл
-        load_from_file = ClassFile().load_from_file(DIR_JSON_VACANCIES)  # Загрузка из файла
-        # Создание экземпляров вакансий и добавление в коллекцию
-        self.collection = create_vacancies(load_from_file)
-        print(f"Собрано вакансий: {self.collection.__len__()}")
+            choice = input("Выберите действие: ")
 
-    # ==подменю конец==
+            if choice == "1":
+                self.set_min_salary()
+            elif choice == "2":
+                self.set_max_salary()
+            elif choice == "3":
+                self.sort_salaries()
+            elif choice == "4":
+                self.apply_min_salary_filter()
+            elif choice == "5":
+                self.apply_max_salary_filter()
+            elif choice == "6":
+                self.display_results()
+            elif choice == "7":
+                self.set_top_vacancies()
+            elif choice == "8":
+                print("Выход в главное меню.")
+                break
+            else:
+                print("Некорректный ввод. Пожалуйста, выберите существующий пункт.")
 
-    def display_results(self):
-        # 3. Отобразить результат
-        print("Результаты парсинга:")
-        for vacancy in self.collection.__repr__():
-            print(vacancy)
-        print(f"В коллекции вакансий: {self.collection.__len__()}")
+    def set_min_salary(self):
+        self.min_salary = validate_input_int(input("Введите минимальную ЗП: "))
+
+    def set_max_salary(self):
+        self.max_salary = validate_input_int(input("Введите максимальную ЗП: "))
 
     def sort_salaries(self):
-        # 4. Отсортировать зарплаты по убыванию
+        # Сортировка зарплат по убыванию
         print("Сортировка зарплат по убыванию...")
         self.collection.sort_vacancies_by_salary()
 
-    def sort_run_salaries_min(self):
-        # 5. Применить фильтр по ЗП
-        self.collection.filter_salary_from(self.min_salary)
+    def apply_min_salary_filter(self):
+        # фильтр минимальной ЗП
+        if self.min_salary:
+            self.collection.filter_salary_from(self.min_salary)
+            print(f"\nВ коллекции вакансий: {self.collection.__len__()}")
+        else:
+            print("\nНе задана минимальная ЗП. Задайте минимальную ЗП.")
+
+    def apply_max_salary_filter(self):
+        # фильтр максимальной ЗП
+        if self.max_salary:
+            self.collection.filter_salary_from_and_to(self.max_salary)
+            print(f"\nВ коллекции вакансий: {self.collection.__len__()}")
+        else:
+            print("\nНе задана максимальная ЗП. Задайте максимальную ЗП.")
+
+    def display_results(self):
+        # отображение результатов
+        print("Результаты парсинга:")
+        for vacancy in self.collection.__repr__():
+            print(vacancy)
+        print(f"\nВ коллекции вакансий: {self.collection.__len__()}")
+
+    def set_top_vacancies(self):
+        # Сколько из ТОП вакансий оставить
         print(f"В коллекции вакансий: {self.collection.__len__()}")
+        self.top_vacancies = validate_input_int(input("Сколько из ТОП вакансий оставить: "))
+        self.collection.number_of_selected(self.top_vacancies)
+        print(f"\nВ коллекции осталось вакансий: {self.collection.__len__()}")
 
-    def sort_run_salaries_max(self):
-        # 6. Применить фильтр по ЗП
-        self.collection.filter_salary_from_and_to(self.max_salary)
-        print(f"В коллекции вакансий: {self.collection.__len__()}")
-
-    def show_vacancy_count(self):
-        # 7. Сколько из ТОП вакансий вывести
-        print(f"В коллекции вакансий: {self.collection.__len__()}")
-        n = int(input("Сколько из ТОП вакансий вывести: "))
-        self.collection.number_of_selected(n)
-        print(f"В коллекции осталось вакансий: {self.collection.__len__()}")
-
-    def save_results_to_file(self):
-        # 8. Сохранить результат поиска в файл
-        # print("Сохранение результата в файл...")
-        # ClassFile().save_to_file(self.collection, DIR_JSON_VACANCIES_SORT)
-        print("Результаты сохранены, выход")
-        self.collection.save_to_json(DIR_JSON_VACANCIES_SORT)
-        self.collection.save_to_txt(DIR_JSON_VACANCIES_SORT_TXT)
-        quit()
-
-    def run(self):
+    def main_menu(self):
         while True:
-            self.show_menu()
-            choice = input("Выберите пункт меню: ")
+            print("\nГлавное меню:")
+            print("1. Задать параметры для парсинга")
+            print("2. Меню фильтрации")
+            print("3. Отобразить результат")
+            print("4. Сохранить результат в файл")
+            print("5. Удалить файл")
+            print("6. Выход")
 
-            if choice == '1':
-                self.set_parameters_menu()
-            elif choice == '2':
-                self.start_parsing()
-            elif choice == '3':
+            choice = input("Выберите действие: ")
+
+            if choice == "1":
+                self.set_parsing_parameters()
+            elif choice == "2":
+                self.filter_menu()
+            elif choice == "3":
                 self.display_results()
-            elif choice == '4':
-                self.sort_salaries()
-            elif choice == '5':
-                self.sort_run_salaries_min()
-            elif choice == '6':
-                self.sort_run_salaries_max()
-            elif choice == '7':
-                self.show_vacancy_count()
-            elif choice == '8':
-                self.save_results_to_file()
-            elif choice == '9':
+            elif choice == "4":
+                self.save_to_file()
+            elif choice == "5":
+                self.delete_file()
+            elif choice == "6":
                 print("Выход из программы.")
                 break
             else:
-                print("Неверный ввод. Пожалуйста, выберите пункт меню снова.")
+                print("Некорректный ввод. Пожалуйста, выберите существующий пункт.")
 
-    def set_parameters_menu(self):
-        while True:
-            print("\nМеню параметров для парсинга:")
-            print("1. Задать название вакансии")
-            print("2. Задать минимальную ЗП от")
-            print("3. Задать максимальную ЗП от")
-            print("4. Задать регион*")
-            print("5. Задать количество страниц для парсинга (на 1ой странице будет 100 вакансий)")
-            print("6. Начать парсинг")
-            print("7. Выход в главное меню")
+    def save_to_file(self):
+        # сохранение результатов в файл
+        print("Результаты сохранены, выход")
+        self.collection.save_to_json(DIR_JSON_VACANCIES_SORT)
+        self.collection.save_to_txt(DIR_JSON_VACANCIES_SORT_TXT)
 
-            sub_choice = input("Выберите пункт меню: ")
-
-            if sub_choice == '1':
-                self.set_vacancy_title()
-            elif sub_choice == '2':
-                self.set_min_salary()
-            elif sub_choice == '3':
-                self.set_max_salary()
-            elif sub_choice == '4':
-                self.set_region()
-            elif sub_choice == '5':
-                self.set_pages_to_parse()
-            elif sub_choice == '6':
-                self.start_parsing()
-            elif sub_choice == '7':
-                break
-            else:
-                print("Неверный ввод. Пожалуйста, выберите пункт меню снова.")
-
-
-if __name__ == "__main__":
-    menu = InteractiveMenu()
-    menu.run()
+    @staticmethod
+    def delete_file():
+        # удаление файла
+        ClassFile.delete_from_file(DIR_JSON_VACANCIES_SORT)
+        ClassFile.delete_from_file(DIR_JSON_VACANCIES_SORT_TXT)

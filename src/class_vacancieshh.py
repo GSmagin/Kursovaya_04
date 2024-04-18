@@ -1,4 +1,5 @@
-from absclasses import AbstractClassVacanciesHH
+from src.absclasses import AbstractClassVacanciesHH
+from datetime import datetime
 
 
 class VacanciesHH(AbstractClassVacanciesHH):
@@ -7,7 +8,8 @@ class VacanciesHH(AbstractClassVacanciesHH):
     """
 
     def __init__(self, name, area_name, salary_from, salary_to, salary_currency,
-                 snippet_requirement, snippet_responsibility, url):
+                 snippet_requirement, snippet_responsibility, published_at,
+                 schedule_name, experience_name, url):
         """
         Инициализирует объект класса VacanciesHH.
 
@@ -18,6 +20,9 @@ class VacanciesHH(AbstractClassVacanciesHH):
         :param salary_currency: Валюта зарплаты.
         :param snippet_requirement: Требования к кандидату.
         :param snippet_responsibility: Обязанности.
+        :param published_at: Дата публикации.
+        :param schedule_name: График работы.
+        :param experience_name: Опыт работы.
         :param url: Ссылка на вакансию.
         """
         self.name = name
@@ -27,6 +32,9 @@ class VacanciesHH(AbstractClassVacanciesHH):
         self.salary_currency = salary_currency
         self.snippet_requirement = snippet_requirement
         self.snippet_responsibility = snippet_responsibility
+        self.published_at = published_at
+        self.schedule_name = schedule_name
+        self.experience_name = experience_name
         self.url = url
 
         self.validate_salary_from()
@@ -53,6 +61,4 @@ class VacanciesHH(AbstractClassVacanciesHH):
         """
         if not self.salary_to:
             self.salary_to = 0
-
-
 

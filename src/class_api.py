@@ -1,4 +1,4 @@
-from absclasses import AbstractClassAPI
+from src.absclasses import AbstractClassAPI
 import requests
 
 
