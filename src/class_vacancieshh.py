@@ -1,4 +1,7 @@
-class VacanciesHH:
+from absclasses import AbstractClassVacanciesHH
+
+
+class VacanciesHH(AbstractClassVacanciesHH):
     """
     Класс для представления вакансий
     """
@@ -50,4 +53,6 @@ class VacanciesHH:
         """
         if not self.salary_to:
             self.salary_to = 0
+
+
 

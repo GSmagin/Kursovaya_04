@@ -1,17 +1,8 @@
-from typing import List, Any, Dict
-from abc import ABC, abstractmethod
+from absclasses import AbstractClassAPI
 import requests
-import json
 
 
-class ClassAPI(ABC):
-
-    @abstractmethod
-    def api_get_pages(self, word_search, region, num_pages) -> dict[str, list[Any]]:
-        pass
-
-
-class ClassAPIHH(ClassAPI):
+class ClassAPIHH(AbstractClassAPI):
     """Подключается к api.hh.ru и получает вакансии по ключевому слову"""
 
     def api_get_pages(self, word_search, region, num_pages) -> list:
@@ -63,6 +54,8 @@ class ClassAPIHHR:
 
     @staticmethod
     def get_api_citi():
+        """Подключается к api.hh.ru и получает id городов"""
+        # В разработке
         url = 'https://api.hh.ru/areas/113'
         response = requests.get(url)
         for i in response.json().get('areas'):
@@ -73,7 +66,3 @@ class ClassAPIHHR:
             dict_regions[i.get('name')] = i.get('id')
         return dict_regions
 
-
-#
-# reg = ClassAPIHHR.get_api_region()
-# print(reg)

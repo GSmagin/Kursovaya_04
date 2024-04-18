@@ -41,7 +41,7 @@ def validate_input_int(user_input: str) -> int:
     """ Валидация введенного пользователем числа """
 
     try:
-        user_input = int(user_input.strip())
+        user_input = int(user_input)
         return user_input
     except ValueError:
         user_input = input('Неверный ввод, попробуйте еще раз ввести цифру: ')
@@ -125,6 +125,7 @@ def save_to_json_file(vacancies, file_path):
 
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(vacancies_data, file, ensure_ascii=False, indent=4)
+
 
 # for i, v in get_api_reg().items():
 #     print(i, v)

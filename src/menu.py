@@ -7,11 +7,11 @@ from src.class_vacancies_collection import VacanciesCollection
 
 class InteractiveMenu:
     def __init__(self):
-        self.vacancy_title = "python"
-        self.min_salary = 250000
-        self.max_salary = 800000
-        self.region = 'Москва'
-        self.pages_to_parse = 2
+        self.vacancy_title = int
+        self.min_salary = int
+        self.max_salary = int
+        self.region = str
+        self.pages_to_parse = int
         self.collection = VacanciesCollection()
 
     def show_menu(self):
@@ -35,11 +35,9 @@ class InteractiveMenu:
         # 2. Задать минимальную ЗП для парсинга
         self.min_salary = int(input("Введите минимальную зарплату: "))
 
-
     def set_max_salary(self):
         # 3. Задать максимальную ЗП для парсинга
         self.max_salary = int(input("Введите максимальную зарплату: "))
-
 
     def set_region(self):
         # 4. Задать регион
@@ -48,7 +46,7 @@ class InteractiveMenu:
             word_to_search = input("Введите название региона (или введите 0 для выхода): ")
             if word_to_search == '0':
                 print("Выход из программы.")
-                quit()
+                break
             else:
                 result = search_word(word_to_search)
             if result:

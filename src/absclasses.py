@@ -1,57 +1,47 @@
-import json
 from abc import ABC, abstractmethod
 
 
-class AbstractClassVacanciesHH:(ABC):
+class AbstractClassVacanciesHH(ABC):
 
+    @abstractmethod
     def validate_salary_from(self):
+        pass
+
+    @abstractmethod
+    def validate_salary_to(self):
         pass
 
 
 class AbstractClassAPI(ABC):
 
-    __url: str
-
     @abstractmethod
-    def get_vacancies(self, parameters: dict) -> list:
-        pass
-
-    @abstractmethod
-    def format_data(self, data: list) -> list:
+    def api_get_pages(self, word_search, region, num_pages) -> dict[list]:
         pass
 
 
-class AbstractClassFileManager(ABC):
+class AbstractClassFile(ABC):
 
-    path_to_main_file: str
-    list_paths: list = LIST_WITH_JSON_PATH
-
+    @staticmethod
     @abstractmethod
-    def save_data(self) -> None:
+    def save_to_file(vacancies, filename) -> None:
         pass
 
     @staticmethod
-    def get_data_vacancy() -> list:
-        """ Метод для получения данных из кэш файлов json """
-
-        res = []
-
-        for path in LIST_WITH_JSON_PATH:
-            with open(path, 'r', encoding='utf-8') as file:
-                try:
-                    res.extend(json.load(file))
-                except json.decoder.JSONDecodeError:
-                    print(f'Вероятно 1 из платформ не отработала корректно(json файл пуст {path})')
-                    pass
-
-        return res
-
-    def clear_data(self) -> None:
-        open(self.path_to_main_file, 'w').close()
-
-
-class AbstractClassMenu(ABC):
-
     @abstractmethod
-    def show_menu(self):
+    def save_to_file_txt(vacancies, filename) -> None:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def save_to_file_append(vacancies, filename) -> None:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def load_from_file(filename) -> list:
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def delete_from_file(filename) -> None:
         pass
