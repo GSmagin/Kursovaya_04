@@ -59,10 +59,13 @@ class ClassAPIHHR:
         url = 'https://api.hh.ru/areas/113'
         response = requests.get(url)
         for i in response.json().get('areas'):
-            print(f"id={i.get('id')} {i.get('name')} ")
+            if i.get('areas'):
+                print(f"{i.get('areas')[0].get('name')}")
         resp = response.json().get('areas')
         dict_regions = {}
         for i in resp:
             dict_regions[i.get('name')] = i.get('id')
         return dict_regions
 
+
+ClassAPIHHR.get_api_citi()

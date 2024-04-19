@@ -126,4 +126,3 @@ def save_to_json_file(vacancies, file_path):
 
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(vacancies_data, file, ensure_ascii=False, indent=4)
-
