@@ -1,4 +1,3 @@
-import json
 import re
 import requests
 from src.class_vacancies_collection import VacanciesCollection
@@ -105,23 +104,3 @@ def search_word(word):
         else:
             print("Слово не найдено в словаре.")
             return None
-
-
-def save_to_json_file(vacancies, file_path):
-    """Сохраняет данные о вакансиях в JSON файл.
-    :param vacancies: Список экземпляров класса VacanciesHH.
-    :param file_path: Путь к JSON файлу."""
-    vacancies_data = []
-    for vacancy in vacancies:
-        vacancy_info = {
-            "name": vacancy.name,
-            "area": {"name": vacancy.area_name},
-            "salary": {"from": vacancy.salary_from, "to": vacancy.salary_to, "currency": vacancy.salary_currency},
-            "snippet": {"requirement": vacancy.snippet_requirement,
-                        "responsibility": vacancy.snippet_responsibility},
-            "alternate_url": vacancy.url
-        }
-        vacancies_data.append(vacancy_info)
-
-    with open(file_path, 'w', encoding='utf-8') as file:
-        json.dump(vacancies_data, file, ensure_ascii=False, indent=4)

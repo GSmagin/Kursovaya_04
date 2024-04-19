@@ -1,5 +1,4 @@
 from src.absclasses import AbstractClassVacanciesHH
-from datetime import datetime
 
 
 class VacanciesHH(AbstractClassVacanciesHH):
@@ -55,4 +54,3 @@ class VacanciesHH(AbstractClassVacanciesHH):
         """
         if not self.salary_to:
             self.salary_to = 0
-
