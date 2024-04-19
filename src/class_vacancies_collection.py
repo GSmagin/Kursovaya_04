@@ -97,40 +97,26 @@ class VacanciesCollection:
         self.vacancies = self.vacancies[0:n]
         return self.vacancies
 
-    def save_to_json(self, file_path) -> None:
+    def export_data_txt(self) -> list:
         """
-        Сохраняет данные о вакансиях в JSON файл.
+        Данные о вакансиях в текстовый файл.
+        """
+        return self.vacancies
 
-        :param file_path: Путь к JSON файлу.
+    def export_data_json(self) -> list:
+        """
+        Подготавливает данные для экспорта в JSON файл.
         """
         vacancies_data = []
-        with open(file_path, 'w', encoding='utf-8') as file:
-            for vacancy in self.vacancies:
-                vacancies_data.append(vacancy.__dict__)
-            json.dump(vacancies_data, file, ensure_ascii=False, indent=4)
-
-    def save_to_txt(self, file_path) -> None:
-        """
-        Сохраняет данные о вакансиях в текстовый файл.
-
-        :param file_path: Путь к текстовому файлу.
-        """
-        with open(file_path, 'w', encoding='utf-8') as file:
-            for vacancy in self.vacancies:
-                file.write(f"Вакансия: {vacancy.name},\n"
-                           f"Город: {vacancy.area_name},\n"
-                           f"Зарплата от: {vacancy.salary_from},\n"
-                           f"Зарплата до: {vacancy.salary_to},\n"
-                           f"Валюта зарплаты: {vacancy.salary_currency},\n"
-                           f"Комментарий: {vacancy.snippet_requirement},\n"
-                           f"Обязанности: {vacancy.snippet_responsibility},\n"
-                           f"Дата публикации: {self.convert_date(vacancy.published_at)},\n"
-                           f"График работы: {vacancy.schedule_name},\n"
-                           f"Опыт работы: {vacancy.experience_name}\n"
-                           f"Ссылка: {vacancy.url}\n\n")
+        for vacancy in self.vacancies:
+            vacancies_data.append(vacancy.__dict__)
+        return vacancies_data
 
     @staticmethod
     def convert_date(date_str):
+        """
+        Конвертирует дату в формат DD.MM.YYYY HH:MM.
+        """
         # Преобразование строки в объект datetime
         date_obj = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S%z")
         # Форматирование даты в требуемый вид

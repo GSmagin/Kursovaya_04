@@ -19,6 +19,14 @@ class AbstractClassAPI(ABC):
         pass
 
 
+class AbstractClassClassAPIHHR(ABC):
+
+    @staticmethod
+    @abstractmethod
+    def get_api_region() -> dict:
+        pass
+
+
 class AbstractClassFile(ABC):
 
     @staticmethod
@@ -29,11 +37,6 @@ class AbstractClassFile(ABC):
     @staticmethod
     @abstractmethod
     def save_to_file_txt(vacancies, filename) -> None:
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def save_to_file_append(vacancies, filename) -> None:
         pass
 
     @staticmethod

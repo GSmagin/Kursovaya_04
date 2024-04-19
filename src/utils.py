@@ -111,7 +111,6 @@ def save_to_json_file(vacancies, file_path):
     """Сохраняет данные о вакансиях в JSON файл.
     :param vacancies: Список экземпляров класса VacanciesHH.
     :param file_path: Путь к JSON файлу."""
-    print("save_to_json")
     vacancies_data = []
     for vacancy in vacancies:
         vacancy_info = {

@@ -1,4 +1,4 @@
-from src.absclasses import AbstractClassAPI
+from src.absclasses import AbstractClassAPI, AbstractClassClassAPIHHR
 import requests
 
 
@@ -37,11 +37,11 @@ class ClassAPIHH(AbstractClassAPI):
         return all_vacancies
 
 
-class ClassAPIHHR:
+class ClassAPIHHR(AbstractClassClassAPIHHR):
     """Подключается к api.hh.ru и получает id регионов"""
 
     @staticmethod
-    def get_api_region():
+    def get_api_region() -> dict:
         url = 'https://api.hh.ru/areas/113'
         response = requests.get(url)
         for i in response.json().get('areas'):
@@ -51,21 +51,3 @@ class ClassAPIHHR:
         for i in resp:
             dict_regions[i.get('name')] = i.get('id')
         return dict_regions
-
-    @staticmethod
-    def get_api_citi():
-        """Подключается к api.hh.ru и получает id городов"""
-        # В разработке
-        url = 'https://api.hh.ru/areas/113'
-        response = requests.get(url)
-        for i in response.json().get('areas'):
-            if i.get('areas'):
-                print(f"{i.get('areas')[0].get('name')}")
-        resp = response.json().get('areas')
-        dict_regions = {}
-        for i in resp:
-            dict_regions[i.get('name')] = i.get('id')
-        return dict_regions
-
-
-ClassAPIHHR.get_api_citi()

@@ -40,12 +40,6 @@ class VacanciesHH(AbstractClassVacanciesHH):
         self.validate_salary_from()
         self.validate_salary_to()
 
-    def __str__(self):
-        """
-        Возвращает строковое представление объекта VacanciesHH.
-        """
-        return f"Vacancy: {self.name}, Region: {self.area_name}, Salary: {self.salary_from}-{self.salary_to} {self.salary_currency}, URL: {self.url}"
-
     def validate_salary_from(self):
         """
         Валидация данный о вакансии

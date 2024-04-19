@@ -138,8 +138,9 @@ class InteractiveMenu:
             print("2. Меню фильтрации")
             print("3. Отобразить результат")
             print("4. Сохранить результат в файл")
-            print("5. Удалить файл")
-            print("6. Выход")
+            print("5. Загрузить результат из файла (загрузит результат парсинга)")
+            print("6. Удалить файл")
+            print("7. Выход")
 
             choice = input("Выберите действие: ")
 
@@ -152,8 +153,10 @@ class InteractiveMenu:
             elif choice == "4":
                 self.save_to_file()
             elif choice == "5":
-                self.delete_file()
+                self.file_to_collection()
             elif choice == "6":
+                self.delete_file()
+            elif choice == "7":
                 print("Выход из программы.")
                 break
             else:
@@ -162,8 +165,19 @@ class InteractiveMenu:
     def save_to_file(self):
         # сохранение результатов в файл
         print("Результаты сохранены, выход")
-        self.collection.save_to_json(DIR_JSON_VACANCIES_SORT)
-        self.collection.save_to_txt(DIR_JSON_VACANCIES_SORT_TXT)
+
+        data_json = self.collection.export_data_json()
+        data_txt = self.collection.export_data_txt()
+        ClassFile.save_to_file(data_json, DIR_JSON_VACANCIES_SORT)
+        ClassFile.save_to_file_txt(data_txt, DIR_JSON_VACANCIES_SORT_TXT)
+
+    def file_to_collection(self):
+        # загрузка результатов из файла
+        load_from_file = ClassFile().load_from_file(DIR_JSON_VACANCIES)  # Загрузка из файла
+        # Создание экземпляров вакансий и добавление в коллекцию
+        self.collection = create_vacancies(load_from_file)
+        print("Результаты загружены")
+        print(f"\nВ коллекции вакансий: {self.collection.__len__()}")
 
     @staticmethod
     def delete_file():
