@@ -21,8 +21,15 @@ class InteractiveMenu:
         self.vacancy_title = validate_input_str()[0]
         print("\n2. Задать регион")
         self.set_region()
-        print("\n3. Задать количество страниц для парсинга(1 страница - 100 вакансий)")
-        self.pages_to_parse = validate_input_int(input("Введите количество страниц: "))
+        print("\n3. Задать количество страниц для парсинга "
+              "\n(max 20 страниц 1 страница - 100 вакансий)")
+        while True:
+            number_of_pages = validate_input_int(input("Введите количество страниц: "))
+            if number_of_pages <= 20:
+                self.pages_to_parse = number_of_pages
+                break
+            else:
+                print("Максимальное количество страниц - 20")
         print("\n4. Начать парсинг")
         self.start_parsing()
 
